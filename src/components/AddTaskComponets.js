@@ -50,6 +50,19 @@ function AddTaskComponets(props) {
 
         return inputList;
     };
+
+    const modalClose = () => {
+        setListNumber(1)
+        setName('')
+        setDecription('')
+        setTaskSattus('Todo')
+        setStartDate('')
+        setEndDate('')
+        setTaskType('Work')
+        setTaskImportant('Yes')
+        setInputValues(Array(listNumber).fill(''))
+        hideModal()
+    }
     return (
         <div>
             <Modal isOpen={showModal} style={{ maxWidth: '60%', width: '100%' }}>
@@ -186,7 +199,7 @@ function AddTaskComponets(props) {
                     <Button color="info" style={{ color: 'white' }} onClick={handleAddTodo}>
                         Add Task
                     </Button>{' '}
-                    <Button color="secondary" onClick={() => hideModal()}>
+                    <Button color="secondary" onClick={modalClose}>
                         Cancel
                     </Button>
                 </ModalFooter>
