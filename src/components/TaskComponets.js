@@ -14,14 +14,14 @@ function TaskComponets(props) {
                             </Label>
                         </div>
                         <div>
-                            <i class="fa-solid fa-star" style={{ fontSize: 22, color: '#0dcaf0' }}></i>
+                            <i className="fa-solid fa-star" style={{ fontSize: 22, color: '#0dcaf0' }}></i>
                         </div>
                     </FormGroup>
                     <hr />
                     <div className='mt-3 d-flex justify-content-between'>
                         <span className='align-self-center'>Date end</span>
                         <div>
-                            <i class="fa-solid fa-trash" style={{ fontSize: 22, color: '#0dcaf0' }}></i>
+                            <i className="fa-solid fa-trash" style={{ fontSize: 22, color: '#0dcaf0' }}></i>
                         </div>
                     </div>
                 </CardBody>

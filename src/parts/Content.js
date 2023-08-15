@@ -10,7 +10,7 @@ function Content(props) {
         <div>
             <CardHeader className='d-flex justify-content-between mb-3'>
                 <h4>Today</h4>
-                <i class="fa-solid fa-circle-plus" style={{ fontSize: 30, color: '#0dcaf0', cursor: 'pointer' }} onClick={(e) => setShowMotal(!showModal)}></i>
+                <i className="fa-solid fa-circle-plus" style={{ fontSize: 30, color: '#0dcaf0', cursor: 'pointer' }} onClick={(e) => setShowMotal(!showModal)}></i>
             </CardHeader>
             <hr />
             <TaskComponets/>

@@ -37,13 +37,13 @@ function Header(props) {
                         tokenValue ? 
                             <>
                                 <NavItem>
-                                    <NavLink href="/"><i style={{ fontSize: 20 }} class="fa-solid fa-bell"></i></NavLink>
+                                    <NavLink href="/"><i style={{ fontSize: 20 }} className="fa-solid fa-bell"></i></NavLink>
                                 </NavItem>
                                 <UncontrolledDropdown nav inNavbar>
                                     <DropdownToggle nav>
                                         <img src={avatar} className="rounded-circle" />
                                     </DropdownToggle>
-                                    <DropdownMenu right>
+                                    <DropdownMenu end={true}>
                                         <DropdownItem>Edit profile</DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem onClick={actionLogout}>Logout</DropdownItem>
@@ -53,10 +53,10 @@ function Header(props) {
                         :
                         <>
                             <NavItem className='me-4'>
-                                <Link to="/login/"><i class="fa-solid fa-user"></i> Login</Link>
+                                <Link to="/login/"><i className="fa-solid fa-user"></i> Login</Link>
                             </NavItem>
                             <NavItem>
-                                <Link to="/signup/"><i class="fa-solid fa-user-plus"></i> Sign up</Link>
+                                <Link to="/signup/"><i className="fa-solid fa-user-plus"></i> Sign up</Link>
                             </NavItem>
                         </>
                     }

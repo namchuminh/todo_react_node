@@ -42,14 +42,18 @@ function AddTaskComponets(props) {
                     id={`description-${i}`}
                     name={`text-${i}`}
                     placeholder={`Task ${i + 1}`}
-                    value={inputValues[i]}
-                    onChange={(e) => handleInputChange(i, e.target.value)}
+                    defaultValue={inputValues[i]}
+                    onBlur={(e) => handleInputChange(i, e.target.value)}
                 />
             );
         }
 
         return inputList;
     };
+
+    const taskMinimize = () => {
+        setListNumber(listNumber - 1)
+    }
 
     const modalClose = () => {
         setListNumber(1)
@@ -98,7 +102,7 @@ function AddTaskComponets(props) {
                             <FormGroup className='d-flex justify-content-between'>
                                 <Button color="success" style={{ color: 'white' }} onClick={() => setListNumber(listNumber + 1)} >Add more</Button>
                                 {
-                                    listNumber > 1 ? <Button color="success" style={{ color: 'white' }} onClick={() => setListNumber(listNumber - 1)} >Remove</Button> : null
+                                    listNumber > 1 ? <Button color="success" style={{ color: 'white' }} onClick={taskMinimize} >Remove</Button> : null
                                 }
 
                             </FormGroup>
