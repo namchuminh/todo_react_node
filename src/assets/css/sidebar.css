@@ -1,0 +1,43 @@
+.sidebar ul li{
+    list-style: none;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.form-control, .form-select{
+    border: 1px solid #0dcaf0;
+    border-radius: 0px;
+    border-width: 1px;
+}
+
+.form-control:focus{
+    border: none;
+    border: 1px solid #0dcaf0;
+    border-radius: 0px;
+}
+
+.left-menu{
+    padding: 15px;
+    background: #f1f1f1;
+    height: 100vh;
+    border-right: 1px solid #bdbebf;
+}
+
+.sidebar-menu button{
+    width: 100%;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid #0dcaf0;
+}
+
+.sidebar-menu button:hover{
+    color: white;
+    border: 1px solid #0dcaf0;
+    box-shadow: 0 0 3px #86b7fe;
+}
+
+.sidebar-menu{
+    padding-left: 0px;
+}
+

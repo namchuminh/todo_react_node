@@ -1,0 +1,16 @@
+.form-login{
+    width: 60%;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.container-login{
+    border-radius: 5px;
+}
+
+.body-login{
+    background-color: #f2f2f2;
+    height: 100vh;
+}

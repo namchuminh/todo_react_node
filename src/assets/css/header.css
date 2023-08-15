@@ -1,0 +1,17 @@
+.container a{
+    color: white;
+    font-weight: bold;
+}
+
+.container a:hover, .container a:focus{
+    color: white;
+}
+
+.rounded-circle{
+    width: 35px;
+    height: 35px;
+}
+
+.nav-item a{
+    text-decoration: unset;
+}
