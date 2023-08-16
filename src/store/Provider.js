@@ -17,7 +17,8 @@ function Provider({ children }) {
         try {
             const response = await login(username, password);
             if (response.data && response.status == 200) {
-                Cookies.set('token', response.data.token);
+                Cookies.set('token', response.data.access_token);
+                Cookies.set('refresh_token', response.data.refresh_token);
                 toast.success("Đăng nhập thành công!");
                 setIsLoggedIn(true);
             }
@@ -28,7 +29,7 @@ function Provider({ children }) {
 
     const handelRegister = async (fullname, username, password, repassword) => {
 
-        if(fullname == "" && username == "" && password == "" && repassword == ""){
+        if(fullname == "" || username == "" || password == "" || repassword == ""){
             toast.error("Vui lòng nhập đủ thông tin!")
             return;
         }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Input, FormGroup, Label } from 'reactstrap';
+import { addTodo } from '../services/todoServices'
 
 function AddTaskComponets(props) {
     const { showModal, hideModal } = props;
@@ -20,15 +22,26 @@ function AddTaskComponets(props) {
         setInputValues(newInputValues);
     };
 
-    const handleAddTodo = () => {
-        console.log(inputValues);
-        console.log(name)
-        console.log(decription)
-        console.log(taskStatus)
-        console.log(startDate)
-        console.log(endDate)
-        console.log(taskType)
-        console.log(taskImportant)
+    const handleAddTodo = async () => {
+        if(name == "" || decription == "" || startDate == "" || endDate == "" || inputValues.length <= 0 || inputValues[0] == ''){
+            toast.error("Vui lòng không bỏ trống thông tin!");
+            return;
+        }
+        if(new Date(startDate) >= new Date(endDate)){
+            toast.error("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!");
+            return;
+        }
+        try{
+            const response = await addTodo(name, decription, taskStatus, taskType, taskImportant, startDate, endDate, inputValues);
+            if(response.status == 201 && response.data){
+                toast.success(response.data.message);
+                modalClose();
+                return;
+            }
+        }catch(error){
+            toast.error(error.response.data.error)
+            return;
+        }
     };
 
     const renderDivList = () => {
