@@ -8,6 +8,16 @@ function Signup(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const { handelRegister } = useContext(Context);
+    
+    const actionRegister = async (fullname, username, password, confirmPassword) => {
+        await handelRegister(fullname, username, password, confirmPassword);
+        setFullname('');
+        setUsername('');
+        setPassword('');
+        setConfirmPassword('');
+    }
+
     return (
         <>
             <Container fluid className='pt-5 body-login'>
@@ -73,13 +83,14 @@ function Signup(props) {
                             <Button
                                 color='info'
                                 style={{ color: 'white', width: '100%', fontWeight: 'bold' }}
+                                onClick={() => actionRegister(fullname, username, password, confirmPassword)}
                             >
                                 Sign Up
                             </Button>
                         </FormGroup>
                         <FormGroup className='mt-4 mb-0 text-center'>
                             <Label>
-                                Has been account? <Link to={'/login/'} style={{ color: 'black', textDecoration: 'none' }}>Log in!</Link> 
+                                Has been account? <Link to={'/login/'} style={{ color: 'black', textDecoration: 'none' }}>Log in!</Link>
                             </Label>
                         </FormGroup>
                     </div>
