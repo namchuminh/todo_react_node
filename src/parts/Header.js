@@ -31,7 +31,7 @@ function Header(props) {
     return (
         <div>
             <Navbar expand="lg" color="info" container>
-                <NavbarBrand to="/">Todo App React</NavbarBrand>
+                <NavbarBrand href="/">Todo App React</NavbarBrand>
                 <Nav className="mr-auto d-flex align-items-center" navbar>
                     {
                         tokenValue ? 

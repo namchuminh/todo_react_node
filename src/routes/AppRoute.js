@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { Routes, Route,  } from 'react-router-dom';
-import { Home, Login, Signup } from "../pages";
+import { Home, Login, Signup, Task } from "../pages";
 import Cookies from 'js-cookie';
 
 import PrivateRoute from './PrivateRoute';
@@ -14,7 +14,8 @@ function AppRoute(props) {
             <Route path="/signup" element={<PublicRoute component={Signup} restricted={true} />} />
 
             {/* Private route */}
-            <Route path="/" element={<PrivateRoute component={Home} />}  />
+            <Route path="/" element={<PrivateRoute component={Home} />} />
+            <Route path="/task/:id/" element={<PrivateRoute component={Task} />} />
 
             <Route path="*" element={<PublicRoute component={Login} restricted={true} />} />
         </Routes>

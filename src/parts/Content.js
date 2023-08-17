@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { CardHeader } from 'reactstrap'
 import { TaskComponets, AddTaskComponets } from '../components';
+import { toast } from 'react-toastify';
+import Context from '../store/Context';
+
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+const day = String(currentDate.getDate()).padStart(2, '0');
+const dateNow = `${year}-${month}-${day}`;
+
 function Content(props) {
     const [showModal, setShowMotal] = useState(false)
+    const { todo } = useContext(Context)
     const hideModal = () => {
         setShowMotal(false)
     }
@@ -13,7 +23,31 @@ function Content(props) {
                 <i className="fa-solid fa-circle-plus" style={{ fontSize: 30, color: '#0dcaf0', cursor: 'pointer' }} onClick={(e) => setShowMotal(!showModal)}></i>
             </CardHeader>
             <hr />
-            <TaskComponets/>
+            {
+                todo.map((item, index) => {
+                    if(item.end == dateNow){
+                        return <TaskComponets key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
+                    }
+                })
+            }
+            <CardHeader className='d-flex justify-content-between mb-3'>
+                <h4>Overdue</h4>
+            </CardHeader>
+            {
+                todo.map((item, index) => {
+                    if(dateNow > item.end && item.status != "Done"){
+                        return <TaskComponets key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
+                    }
+                })
+            }
+            <CardHeader className='d-flex justify-content-between mb-3'>
+                <h4>List</h4>
+            </CardHeader>
+            {
+                todo.map((item, index) => {
+                    return <TaskComponets key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
+                })
+            }
             <AddTaskComponets showModal={showModal} hideModal={hideModal} />
         </div>
     )

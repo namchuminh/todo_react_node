@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Input, FormGroup, Label } from 'reactstrap';
 import { addTodo } from '../services/todoServices'
+import Context from '../store/Context';
 
 function AddTaskComponets(props) {
+
+    const { addTodoList } = useContext(Context);
+
     const { showModal, hideModal } = props;
     const [listNumber, setListNumber] = useState(1);
     const [name, setName] = useState('');
@@ -23,22 +27,27 @@ function AddTaskComponets(props) {
     };
 
     const handleAddTodo = async () => {
-        if(name == "" || decription == "" || startDate == "" || endDate == "" || inputValues.length <= 0 || inputValues[0] == ''){
+        if (name == "" || decription == "" || startDate == "" || endDate == "" || inputValues.length <= 0 || inputValues[0] == '') {
             toast.error("Vui lòng không bỏ trống thông tin!");
             return;
         }
-        if(new Date(startDate) >= new Date(endDate)){
+        if (new Date(startDate) >= new Date(endDate)) {
             toast.error("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!");
             return;
         }
-        try{
+        try {
             const response = await addTodo(name, decription, taskStatus, taskType, taskImportant, startDate, endDate, inputValues);
-            if(response.status == 201 && response.data){
+            if (response.status == 201 && response.data) {
                 toast.success(response.data.message);
+                addTodoList(response.data.todo);
                 modalClose();
                 return;
             }
-        }catch(error){
+        } catch (error) {
+            if (error.response.status == 401) {
+                toast.error("Không có quyền thực hiện!");
+                return;
+            }
             toast.error(error.response.data.error)
             return;
         }
