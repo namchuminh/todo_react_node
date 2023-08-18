@@ -9,7 +9,7 @@ git clone https://github.com/namchuminh/todo_react_node.git
 Source Code API Node:
 
 ```
-git clone https://github.com/namchuminh/todo_react_node.git
+git clone https://github.com/namchuminh/nodejs_todo_api.git
 ```
 
 ## Install
