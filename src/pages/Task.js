@@ -138,7 +138,7 @@ function Task(props) {
                                 })
                         }
                     </ul>
-                    <div className='d-flex justify-content-end'>
+                    <div className='d-flex justify-content-between'>
                         <Button className='mt-5 me-3'><Link to='/' style={{ fontWeight: 'unset', textDecoration: 'none' }}>Go Back</Link></Button>
                         <Button className='mt-5' onClick={() => handleUpdateTodo()} >Update Todo</Button>
                     </div>
