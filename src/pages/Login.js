@@ -2,17 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FormGroup, Label, Input, Button, Container } from 'reactstrap'
 import '../assets/css/login.css';
 import Context from '../store/Context';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 function Login(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { handleLogin, isLoggedIn } = useContext(Context);
-    const navigate = useNavigate();
-    
-    if(isLoggedIn){
-        return navigate('/');
-    }
+    const { handleLogin } = useContext(Context);
 
     return (
         <>

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Context from './Context';
 import { login, register } from '../services/userServices'
-import { listTodo } from '../services/todoServices';
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie';
 
 function Provider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState('');
-
+    
     const handleLogin = async (username, password) => {
         try {
             const response = await login(username, password);
             if (response.data && response.status == 200) {
-                Cookies.set('token', response.data.access_token);
-                Cookies.set('refresh_token', response.data.refresh_token);
+                await Cookies.set('token', response.data.access_token);
+                await Cookies.set('refresh_token', response.data.refresh_token);
                 toast.success("Đăng nhập thành công!");
                 setIsLoggedIn(true);
+                window.location.href = '/'
             }
         } catch (error) {
             toast.error(error.response.data.error)
