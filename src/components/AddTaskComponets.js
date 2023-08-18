@@ -2,13 +2,10 @@ import React, { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Input, FormGroup, Label } from 'reactstrap';
 import { addTodo } from '../services/todoServices'
-import Context from '../store/Context';
 
 function AddTaskComponets(props) {
 
-    const { addTodoList } = useContext(Context);
-
-    const { showModal, hideModal } = props;
+    const { showModal, hideModal, addTodoList } = props;
     const [listNumber, setListNumber] = useState(1);
     const [name, setName] = useState('');
     const [decription, setDecription] = useState('')

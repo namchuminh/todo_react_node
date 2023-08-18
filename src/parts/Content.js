@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CardHeader } from 'reactstrap'
 import { TaskComponets, AddTaskComponets } from '../components';
-import { toast } from 'react-toastify';
-import Context from '../store/Context';
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -12,10 +10,11 @@ const dateNow = `${year}-${month}-${day}`;
 
 function Content(props) {
     const [showModal, setShowMotal] = useState(false)
-    const { todo } = useContext(Context)
+    const {todo, removeTodo, addTodoList} = props;
     const hideModal = () => {
         setShowMotal(false)
     }
+
     return (
         <div>
             <CardHeader className='d-flex justify-content-between mb-3'>
@@ -26,7 +25,7 @@ function Content(props) {
             {
                 todo.map((item, index) => {
                     if(item.end == dateNow){
-                        return <TaskComponets key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
+                        return <TaskComponets removeTodo={removeTodo} key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
                     }
                 })
             }
@@ -36,7 +35,7 @@ function Content(props) {
             {
                 todo.map((item, index) => {
                     if(dateNow > item.end && item.status != "Done"){
-                        return <TaskComponets key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
+                        return <TaskComponets removeTodo={removeTodo} key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
                     }
                 })
             }
@@ -45,10 +44,10 @@ function Content(props) {
             </CardHeader>
             {
                 todo.map((item, index) => {
-                    return <TaskComponets key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
+                    return <TaskComponets removeTodo={removeTodo} key={index} name={item.name} end={item.end} status={item.status} start={item.start} important={item.important} id={item.id} />
                 })
             }
-            <AddTaskComponets showModal={showModal} hideModal={hideModal} />
+            <AddTaskComponets addTodoList={addTodoList} showModal={showModal} hideModal={hideModal} />
         </div>
     )
 }

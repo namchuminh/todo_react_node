@@ -2,9 +2,11 @@ import Home from "./Home";
 import Login from "./Login"
 import Signup from "./Signup";
 import Task from "./Task";
+import Profile from "./Profile";
 export{
     Home,
     Login,
     Signup,
-    Task
+    Task,
+    Profile
 }

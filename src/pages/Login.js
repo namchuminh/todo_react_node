@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function Login(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { handleLogin, isLoggedIn, token } = useContext(Context);
+    const { handleLogin, isLoggedIn } = useContext(Context);
     const navigate = useNavigate();
     
     if(isLoggedIn){

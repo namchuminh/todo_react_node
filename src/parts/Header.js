@@ -44,7 +44,9 @@ function Header(props) {
                                         <img src={avatar} className="rounded-circle" />
                                     </DropdownToggle>
                                     <DropdownMenu end={true}>
-                                        <DropdownItem>Edit profile</DropdownItem>
+                                        <DropdownItem>
+                                            <Link to="/profile/" style={{ color: 'unset', fontWeight: 'unset'}}>Edit profile</Link>
+                                        </DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem onClick={actionLogout}>Logout</DropdownItem>
                                     </DropdownMenu>

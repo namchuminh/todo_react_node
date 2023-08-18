@@ -16,7 +16,7 @@ function Sidebar(props) {
                             <Button className='btn btn-info'>Filter by type <br />(work / personal)</Button>
                         </li>
                         <li>
-                            <Button className='btn btn-info'>Filter by status <br />(done / in progress / todo)</Button>
+                            <Button className='btn btn-info'>Filter by priority <br />(important / not)</Button>
                         </li>
                     </ul>
                 </div>

@@ -25,12 +25,12 @@ function Signup(props) {
                     <div className='form-login'>
                         <FormGroup>
                             <Label
-                                for="username"
+                                for="fullname"
                             >
                                 Full name
                             </Label>
                             <Input
-                                id="username"
+                                id="fullname"
                                 placeholder="Enter full name..."
                                 value={fullname}
                                 onChange={(e) => setFullname(e.target.value)}
@@ -66,12 +66,12 @@ function Signup(props) {
                         </FormGroup>
                         <FormGroup>
                             <Label
-                                for="password"
+                                for="password2"
                             >
                                 Confirm password
                             </Label>
                             <Input
-                                id="password"
+                                id="password2"
                                 placeholder="Confirm password..."
                                 type="password"
                                 value={confirmPassword}

@@ -6,8 +6,7 @@ import '../assets/css/content.css'
 import { toast } from 'react-toastify';
 import Context from '../store/Context';
 function TaskComponets(props) {
-    const { name, start, end, status, important, id } = props;
-    const { removeTodo } = useContext(Context)
+    const { name, start, end, status, important, id, removeTodo  } = props;
     const handleRemove = async (id) => {
         try {
             const response = await deleteTodo(id);

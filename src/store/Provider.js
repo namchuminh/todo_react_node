@@ -8,34 +8,6 @@ import Cookies from 'js-cookie';
 function Provider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState('');
-    const [todo, setTodo] = useState([]);
-
-    useEffect(()=> {
-        const tokenValue = Cookies.get('token');
-        setToken(tokenValue)
-
-        getTodo();
-    },[token])
-
-    const getTodo = async () => {
-        try {
-            const response = await listTodo();
-            if (response.status == 200 && response.data) {
-                setTodo(response.data.todo)
-            }
-        } catch (error) {
-            toast.error(error)
-        }
-    }
-
-    const addTodoList = (newTodo) => {
-        setTodo([newTodo,...todo])
-    }
-
-    const removeTodo = (id) => {
-        const filteredTodos = todo.filter((item) => item.id !== id);
-        setTodo(filteredTodos);
-    }
 
     const handleLogin = async (username, password) => {
         try {
@@ -53,18 +25,18 @@ function Provider({ children }) {
 
     const handelRegister = async (fullname, username, password, repassword) => {
 
-        if(fullname == "" || username == "" || password == "" || repassword == ""){
+        if (fullname == "" || username == "" || password == "" || repassword == "") {
             toast.error("Vui lòng nhập đủ thông tin!")
             return;
         }
 
-        try{
+        try {
             const response = await register(fullname, username, password, repassword);
             if (response.data && response.status == 201) {
                 toast.success(response.data.message);
                 return;
             }
-        }catch(error){
+        } catch (error) {
             toast.error(error.response.data.error)
             return;
         }
@@ -79,7 +51,7 @@ function Provider({ children }) {
     }
 
     return (
-        <Context.Provider value={{ handleLogin, isLoggedIn, token, handelLogout, handelRegister, todo, removeTodo, addTodoList }}>
+        <Context.Provider value={{ handleLogin, isLoggedIn, token, handelLogout, handelRegister }}>
             {children}
         </Context.Provider>
     )
